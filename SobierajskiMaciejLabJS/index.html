@@ -78,6 +78,10 @@
 	<!-- Main container -->
 	<section id="main-page">
 		<div class="container">
+			<h1>Moje dane:</h1>
+            <p id="dane1"></p>
+            <p id="dane2"></p>
+            <button onclick="wyswietlDane()">Kliknij, aby wyświetlić dane</button>
 
 			<div class="jumbotron">
 				<h1>Języki wysokiego poziomu <br> w aplikacjach internetowych</h1>
@@ -86,7 +90,7 @@
 						<p>nazwisko:</p>
 					</div>
 					<div class="col-md-4">
-						<p>Sobierajski</p>
+						<p id="nazwisko"></p>
 					</div>
 				</div>
 				<div class="row">
@@ -94,7 +98,7 @@
 						<p>imię:</p>
 					</div>
 					<div class="col-md-4">
-						<p>Maciej</p>
+						<p id="imie"></p>
 					</div>
 				</div>
 				<div class="row">
@@ -102,7 +106,7 @@
 						<p>grupa:</p>
 					</div>
 					<div class="col-md-4">
-						<p> 1</p>
+						<p id="grupa"></p>
 					</div>
 				</div>
 				<div class="row">
@@ -110,7 +114,7 @@
 						<p>email:</p>
 					</div>
 					<div class="col-md-4">
-						<p>20480@student.ans-elblag.pl</p>
+						<p id="email"></p>
 					</div>
 				</div>
 				<div class="row">
@@ -118,7 +122,7 @@
 						<p>nr indeksu:</p>
 					</div>
 					<div class="col-md-4">
-						<p>20480</p>
+						<p id="indeks"></p>
 					</div>
 				</div>
 
@@ -134,12 +138,74 @@
 				<h1>Projekt 1</h1>
 
 				<p>Miejsce na projekt laboratoryjny</p>
+				<script async>
+					let name = prompt('Jak masz na imię?', '');
+				   </script>
+				   <script>
+					document.write('<p>Ćw. 1. Witaj, ' + name + '</p>');
+				</script>	
+
+				<!--Zadanie 1-->
 				<script>
 					let tabWarzywa = ["Marchew","Ogórek","Pomidor","Sałata"];
-					alert(tablica[0]);
+					alert(tabWarzywa[0]);
 				</script>
 
-			</div>
+				<script>
+					tabWarzywa[tabWarzywa.length-1] = "Ziemniak";
+					alert(tabWarzywa[tabWarzywa.length-1]);
+				</script>
+
+				<script>
+					tabWarzywa[4]="Rodzkiew";
+					alert(tabWarzywa);
+				</script>
+				
+				<script>
+					tabWarzywa[tabWarzywa.length]="Kapusta";
+					alert(tabWarzywa);
+				</script>
+
+
+				<script>
+					tabWarzywa.push('Batat', 'Cebula', 'Kalafior', 'Papryka');
+					alert(tabWarzywa);
+				</script>
+
+				<script>
+					tabWarzywa.unshift('Seler', 'Burak');
+					alert(tabWarzywa);
+				</script>
+
+				<script>
+					let test = [0,1,2,3];
+					let totalItems = test.push(4,5);
+					alert("Ilosc w tablicy to "+ totalItems);
+				</script>
+
+				<script>
+					alert("Tablica to "+test);
+					let removedItem = test.pop(); //pop usuwa ostatni element, w pdfie jest chyba że odwrotnie
+					alert("Usunięty element to "+removedItem);
+					alert("Tablica po usunieciu to "+test);
+				</script>
+
+				<!--Zadanie 2-->
+				<script>
+					let nowaTablica = ["Masło","Pieprz","Sól","Woda"]
+					document.write('<p>Pierwszy element to <strong>');
+					document.write(nowaTablica[0] + '</strong></p>');
+					document.write('<p>Ostatni element to <strong>');
+					document.write(nowaTablica[nowaTablica.length-1] + '</strong></p>');
+					nowaTablica.unshift("Jogurt");
+					document.write('<p>Pierwszy element to <strong>');
+					document.write(nowaTablica[0] + '</strong></p>');//wyswietla sie Jogurt
+				</script>
+
+			</script>
+			<p id="element-count"></p>
+			<p id="polowa-tablicy"></p>	
+		</div>
 		</div>
 	</section>
 
@@ -150,8 +216,15 @@
 				<h1>Projekt 2</h1>
 				
 				<p>Miejsce na projekt laboratoryjny</p>
-				
+				<div class="quiz-container">
+					<h1>Quiz Historyczny</h1>
+					<div id="quiz-question" class="quiz-question"></div>
+					<input type="text" id="user-answer" placeholder="Twoja odpowiedź">
+					<button onclick="submitAnswer()">Odpowiedz</button>
+					<div id="quiz-result" class="quiz-result"></div>
+				</div>
 			</div>
+		
 		</div>
 	</section>
 
@@ -287,6 +360,85 @@
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
 	<script src="js/forms.js"></script>
 	
+	<!-- Zadanie 3 -->
+	<script>
+        const divs = document.getElementsByTagName('div').length;
+        const headings = document.getElementsByTagName('h1').length;
+        let message = "Na stronie znajduje się " + divs + " divow oraz " + headings + " nagłówków h1.";
+        document.getElementById('element-count').innerHTML = message;
+    </script>
+	<!-- Zadanie 4-->
+	<script>
+        const daneOsobowe = {
+            nazwisko: "Sobierajski",
+            imie: "Maciej",
+            grupa: "1",
+            email: "20480@student.ans-elblag.pl",
+            indeks: "20480"
+        };
+        document.getElementById('dane1').innerHTML = "Imię: " + daneOsobowe.imie;
+        document.getElementById('dane2').innerHTML = "Nazwisko: " + daneOsobowe.nazwisko;
+
+        document.getElementById('nazwisko').innerHTML = daneOsobowe.nazwisko;
+        document.getElementById('imie').innerHTML = daneOsobowe.imie;
+        document.getElementById('grupa').innerHTML = daneOsobowe.grupa;
+        document.getElementById('email').innerHTML = daneOsobowe.email;
+        document.getElementById('indeks').innerHTML = daneOsobowe.indeks;
+        function wyswietlDane() {
+            alert("Imię: " + daneOsobowe.imie + "\nNazwisko: " + daneOsobowe.nazwisko + 
+                  "\nGrupa: " + daneOsobowe.grupa + "\nEmail: " + daneOsobowe.email + 
+                  "\nNr indeksu: " + daneOsobowe.indeks);
+        }
+
+    </script>
+	<!--Zadanie 5-->
+	<script>
+        var questions = [
+            ['W którym roku rozpoczęła się II wojna światowa?', 1939],
+            ['Kto był pierwszym cesarzem Francji?', 'Napoleon Bonaparte'],
+            ['Jak nazywał się pierwszy prezydent Stanów Zjednoczonych?', 'George Washington'],
+            ['Kiedy upadł mur berliński?', 1989],
+            ['W którym roku Polska wstąpiła do Unii Europejskiej?', 2004]
+        ];
+
+        var currentQuestionIndex = 0;
+        var score = 0;
+        function loadQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                document.getElementById('quiz-question').innerHTML = questions[currentQuestionIndex][0];
+                document.getElementById('user-answer').value = '';
+            } else {
+                showResults();
+            }
+        }
+
+        function submitAnswer() {
+            var userAnswer = document.getElementById('user-answer').value;
+            var correctAnswer = questions[currentQuestionIndex][1];
+
+            if (userAnswer.toLowerCase() == correctAnswer.toString().toLowerCase()) {
+                alert('Prawidłowa odpowiedź!');
+                score++;
+            } else {
+                alert('Błąd. Prawidłowa odpowiedź to: ' + correctAnswer);
+            }
+
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function showResults() {
+            document.getElementById('quiz-question').style.display = 'none';
+            document.getElementById('user-answer').style.display = 'none';
+            document.querySelector('button').style.display = 'none';
+
+            var resultText = 'Koniec quizu! Twój wynik to: ' + score + '/' + questions.length;
+            document.getElementById('quiz-result').innerHTML = resultText;
+            document.getElementById('quiz-result').style.display = 'block';
+        }
+
+        loadQuestion();
+    </script>
 </body>
 
 </html>
