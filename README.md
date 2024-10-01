@@ -1,3 +1,3 @@
 Imię: Maciej
 Nazwisko: Sobierajski
-Index: 20480
+Index: 20480.
