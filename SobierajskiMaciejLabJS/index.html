@@ -78,10 +78,7 @@
 	<!-- Main container -->
 	<section id="main-page">
 		<div class="container">
-			<h1>Moje dane:</h1>
-            <p id="dane1"></p>
-            <p id="dane2"></p>
-            <button onclick="wyswietlDane()">Kliknij, aby wyświetlić dane</button>
+
 
 			<div class="jumbotron">
 				<h1>Języki wysokiego poziomu <br> w aplikacjach internetowych</h1>
@@ -125,7 +122,7 @@
 						<p id="indeks"></p>
 					</div>
 				</div>
-
+            <button onclick="wyswietlDane()">Kliknij, aby wyświetlić dane</button>
 			</div>
 
 		</div>
@@ -185,7 +182,7 @@
 
 				<script>
 					alert("Tablica to "+test);
-					let removedItem = test.pop(); //pop usuwa ostatni element, w pdfie jest chyba że odwrotnie
+					let removedItem = test.pop();
 					alert("Usunięty element to "+removedItem);
 					alert("Tablica po usunieciu to "+test);
 				</script>
@@ -217,7 +214,7 @@
 				
 				<p>Miejsce na projekt laboratoryjny</p>
 				<div class="quiz-container">
-					<h1>Quiz Historyczny</h1>
+					<h2>Quiz Historyczny</h2>
 					<div id="quiz-question" class="quiz-question"></div>
 					<input type="text" id="user-answer" placeholder="Twoja odpowiedź">
 					<button onclick="submitAnswer()">Odpowiedz</button>
@@ -364,7 +361,7 @@
 	<script>
         const divs = document.getElementsByTagName('div').length;
         const headings = document.getElementsByTagName('h1').length;
-        let message = "Na stronie znajduje się " + divs + " divow oraz " + headings + " nagłówków h1.";
+        let message = "Na stronie znajduje się " + divs + " divów oraz " + headings + " nagłowków h1.";
         document.getElementById('element-count').innerHTML = message;
     </script>
 	<!-- Zadanie 4-->
@@ -376,9 +373,6 @@
             email: "20480@student.ans-elblag.pl",
             indeks: "20480"
         };
-        document.getElementById('dane1').innerHTML = "Imię: " + daneOsobowe.imie;
-        document.getElementById('dane2').innerHTML = "Nazwisko: " + daneOsobowe.nazwisko;
-
         document.getElementById('nazwisko').innerHTML = daneOsobowe.nazwisko;
         document.getElementById('imie').innerHTML = daneOsobowe.imie;
         document.getElementById('grupa').innerHTML = daneOsobowe.grupa;
@@ -400,7 +394,6 @@
             ['Kiedy upadł mur berliński?', 1989],
             ['W którym roku Polska wstąpiła do Unii Europejskiej?', 2004]
         ];
-
         var currentQuestionIndex = 0;
         var score = 0;
         function loadQuestion() {
@@ -411,7 +404,6 @@
                 showResults();
             }
         }
-
         function submitAnswer() {
             var userAnswer = document.getElementById('user-answer').value;
             var correctAnswer = questions[currentQuestionIndex][1];
