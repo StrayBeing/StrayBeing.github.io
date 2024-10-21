@@ -1,27 +1,34 @@
 const http = require('http');
 const fs = require('fs');
-http.createServer(function(req, res) {
- if (req.url == '/') {
- fs.readFile('./titles.json', function(err, data) {
+const server = http.createServer(function (req, res) {
+ getTitles(res);
+}).listen(8000, "127.0.0.1");
+function getTitles(res) {
+ fs.readFile('./titles.json', function (err, data) {
  if (err) {
- console.error(err);
- res.end('titles.json error');
+ hadError(err, res);
  }
  else {
- const titles = JSON.parse(data.toString());
- fs.readFile('./template.html', function(err, data) {
+ getTemplate(JSON.parse(data.toString()), res);
+ }
+ });
+}
+function getTemplate(titles, res) {
+ fs.readFile('./template.html', function (err, data) {
  if (err) {
- console.error(err);
- res.end('template.html error');
+ hadError(err, res);
  }
  else {
- const tmpl = data.toString();
- const html = tmpl.replace('%', titles.join('</li><li>'));
+ formatHtml(titles, data.toString(), res);
+ }
+ });
+}
+function formatHtml(titles, tmpl, res) {
+ let html = tmpl.replace('%', titles.join('</li><li>'));
  res.writeHead(200, {'Content-Type': 'text/html'});
  res.end(html);
- }
- });
- }
- });
- }
-}).listen(8000, "127.0.0.1");
+}
+function hadError(err, res) {
+ console.error(err);
+ res.end('Error');
+}
