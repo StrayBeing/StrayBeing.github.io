@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratoria</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section id="ProjektX">
+        <p><span class="pq">Przygotowanie to klucz do sukcesu.</span></p>
+        <p><span class="pq">Najpierw myśl, potem działaj.</span></p>
+        <p><span class="pq">Sukces polega na tym, aby znać sekret szczęścia.</span></p>
+    </section>
+
+    <section id="Projekt3">
+        <a href="#">Najedź 1</a>
+        <a href="#">Najedź 2</a>
+        <a href="#">Najedź 3</a>
+    </section>
+
+    <section id="Projekt4">
+        <h1>h1 Test</h1>
+        <h2>h2 Test</h2>
+        <p>p Test</p>
+        <form id="myForm">
+            <button type="button" id="clickMe">Kliknij mnie!</button>
+            <div class="button-container">
+                <button type="button" class="change-btn" data-number="1">Przycisk 1</button>
+                <button type="button" class="change-btn" data-number="2">Przycisk 2</button>
+                <button type="button" class="change-btn" data-number="3">Przycisk 3</button>
+                <button type="button" class="change-btn" data-number="4">Przycisk 4</button>
+                <button type="button" class="change-btn" data-number="5">Przycisk 5</button>
+                <button type="button" class="change-btn" data-number="6">Przycisk 6</button>
+                <button type="button" class="change-btn" data-number="7">Przycisk 7</button>
+                <button type="button" class="change-btn" data-number="8">Przycisk 8</button>
+                <button type="button" class="change-btn" data-number="9">Przycisk 9</button>
+                <button type="button" class="change-btn" data-number="10">Przycisk 10</button>
+            </div>
+        </form>
+    </section>
+
+    <section id="Projekt5">
+        <h2>Laboratoryjne Elementy</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Element</th>
+                    <th>Opis</th>
+                    <th>Akcja</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Input 1</td>
+                    <td><input type="text" placeholder="Wpisz coś..."></td>
+                    <td><button class="edit-btn" data-target="1">Edytuj</button></td>
+                </tr>
+                <tr>
+                    <td>Input 2</td>
+                    <td><input type="text" placeholder="Wpisz coś..."></td>
+                    <td><button class="edit-btn" data-target="2">Edytuj</button></td>
+                </tr>
+                <tr>
+                    <td>Input 3</td>
+                    <td><input type="text" placeholder="Wpisz coś..."></td>
+                    <td><button class="edit-btn" data-target="3">Edytuj</button></td>
+                </tr>
+                <tr>
+                    <td>Input 4</td>
+                    <td><input type="text" placeholder="Wpisz coś..."></td>
+                    <td><button class="edit-btn" data-target="4">Edytuj</button></td>
+                </tr>
+                <tr>
+                    <td>Input 5</td>
+                    <td><input type="text" placeholder="Wpisz coś..."></td>
+                    <td><button class="edit-btn" data-target="5">Edytuj</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="Projekt6">
+        <h2>Przyciski do edycji</h2>
+        <button class="edit-color" data-target="1">Zmień kolor Input 1</button>
+        <button class="edit-color" data-target="2">Zmień kolor Input 2</button>
+        <button class="edit-color" data-target="3">Zmień kolor Input 3</button>
+        <button class="edit-color" data-target="4">Zmień kolor Input 4</button>
+        <button class="edit-color" data-target="5">Zmień kolor Input 5</button>
+    </section>
+
+    <section id="Projekt7">
+        <h2>Przyciski do filtrów</h2>
+        <button class="filter-btn" data-filter="even">Parzyste wiersze</button>
+        <button class="filter-btn" data-filter="odd">Nieparzyste wiersze</button>
+        <button class="filter-btn" data-filter="class">Wiersze z klasą</button>
+        <button class="filter-btn" data-filter="first-last">Pierwszy i ostatni</button>
+        <button class="filter-btn" data-filter="not">Elementy, które nie pasują</button>
+        <button class="filter-btn" data-filter="contains">Elementy zawierające tekst</button>
+        <button class="filter-btn" data-filter="hidden">Pokaż ukryte elementy</button>
+    </section>
+
+    <div class="main"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('span.pq').each(function() {
+                const quote = $(this).clone();
+                quote.removeClass('pq').addClass('pullquote');
+                $(this).before(quote);
+            });
+            $(document).dblclick(function() {
+                alert("Podwójnie kliknięto!");
+            });
+            $('#Projekt3 a').hover(function() {
+                const message = "<p>Wskazałeś odnośnik myszą!</p>";
+                $('.main').append(message);
+            });
+            $('#clickMe').click(function() {
+                $(this).text("zostałem kliknięty!");
+            });
+
+            $('.change-btn').click(function() {
+            const btnNumber = $(this).data('number');
+            $(this).text(`NR. ${btnNumber} kliknięty`);
+            switch (btnNumber) {
+                case 1:
+                    $('h1').addClass('bg-blue');
+                    $('.main').append('<p>Zmieniono tło nagłówka na niebieskie. TAG: H1</p>');
+                    break;
+                case 2:
+                    $('h2').addClass('bg-green');
+                    $('.main').append('<p>Zmieniono tło nagłówka na zielone. TAG: H2</p>');
+                    break;
+                case 3:
+                    $('p').addClass('bg-yellow');
+                    $('.main').append('<p>Zmieniono tło akapitu na żółte. TAG: P</p>');
+                    break;
+                case 4:
+                    $('h1').addClass('font-');
+                    $('.main').append('<p>Zwiększono czcionkę nagłówka. TAG: H1</p>');
+                    break;
+                case 5:
+                    $('h2').addClass('font-small');
+                    $('.main').append('<p>Zmniejszono czcionkę nagłówka. TAG: H2</p>');
+                    break;
+                case 6:
+                    $('p').addClass('bold');
+                    $('.main').append('<p>Pogrubiono tekst akapitu. TAG: P</p>');
+                    break;
+                case 7:
+                    $('h1').addClass('italic');
+                    $('.main').append('<p>Użyto kursywy w nagłówku. TAG: H1</p>');
+                    break;
+                case 8:
+                    $('h2').addClass('bold italic');
+                    $('.main').append('<p>Pogrubiono i użyto kursywy w nagłówku. TAG: H2</p>');
+                    break;
+                case 9:
+                    $('p').css('color', 'purple');
+                    $('.main').append('<p>Zmieniłem kolor tekstu akapitu na purpurowy. TAG: P</p>');
+                    break;
+                case 10:
+                    $('h1, h2, p').css({'font-size': '30px', 'color': 'orange'});
+                    $('.main').append('<p>Zmieniłem czcionkę wszystkich nagłówków i akapitów. TAG: H1, H2, P</p>');
+                    break;
+                default:
+                    break;
+            }
+        });
+            $('.edit-btn').click(function() {
+                const target = $(this).data('target');
+                const inputField = $(`tbody tr:nth-child(${target}) input`);
+                inputField.css('border', '2px solid blue');
+                inputField.focus();
+            });
+
+            $('.edit-color').click(function() {
+                const target = $(this).data('target');
+                const inputField = $(`tbody tr:nth-child(${target}) input`);
+                const currentColor = inputField.css('border-color');
+                if (currentColor === 'rgb(0, 0, 255)') {
+                    inputField.css('border', '1px solid #ccc');
+                    $(this).css('background-color', '');
+                } else {
+                    inputField.css('border', '2px solid blue');
+                    $(this).css('background-color', 'lightblue'); 
+                }
+            });
+            
+            $('.filter-btn').click(function() {
+                const filter = $(this).data('filter');
+                switch (filter) {
+                    case 'even':
+                        $('tbody tr:even').css('background-color', 'lightgreen');
+                        $('tbody tr:odd').css('background-color', '');
+                        break;
+                    case 'odd':
+                        $('tbody tr:odd').css('background-color', 'lightcoral');
+                        $('tbody tr:even').css('background-color', '');
+                        break;
+                    case 'class':
+                        $('tbody tr').removeClass('highlight');
+                        $('tbody tr:even').addClass('highlight').css('background-color', 'lightblue');
+                        break;
+                    case 'first-last':
+                        $('tbody tr:first').css('background-color', 'lightyellow');
+                        $('tbody tr:last').css('background-color', 'lightyellow');
+                        break;
+                    case 'not':
+                        $('tbody tr:not(:first)').css('background-color', 'lightgray');
+                        break;
+                    case 'contains':
+                        $('tbody tr:contains("Input 3")').css('background-color', 'lightpink');
+                        break;
+                    case 'hidden':
+                        $('tbody tr').fadeOut().fadeIn();
+                        break;
+                    default:
+                        break;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
