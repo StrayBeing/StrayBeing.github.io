@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab 6</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <section id="ProjektX">
+            <p><span class="pq">Przygotowanie to klucz do sukcesu.</span></p>
+            <p><span class="pq">Najpierw myśl, potem działaj.</span></p>
+            <p><span class="pq">Sukces polega na tym, aby znać sekret szczęścia.</span></p>
+        </section>
+
+    </body>
+    <script>
+        $(document).ready(function() {
+            $('span.pq').each(function() {
+                const quote = $(this).clone();
+                quote.removeClass('pq'); 
+                quote.addClass('pullquote'); 
+                $(this).before(quote); 
+            }); 
+        }); 
+    </script>
+</html>
