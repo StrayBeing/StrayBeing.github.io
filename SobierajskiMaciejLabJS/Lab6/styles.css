@@ -1,15 +1,18 @@
-.pullquote {
-    float: right;
-    clear: right;
-    width: 200px;
-    padding: 10px;
+
+.changed {
+    color: red;
     font-size: 20px;
-    background-color: rgba(255, 211, 224, 0.5);
-    border-radius: 10px;
-    margin: 20px 0 10px 10px;
-    font-style: italic;
+    font-weight: bold;
 }
-.pq{
+
+.bg-blue { background-color: lightblue; }
+.bg-green { background-color: lightgreen; }
+.bg-yellow { background-color: lightyellow; }
+.font-large { font-size: 50px; }
+.font-small { font-size: 12px; }
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+#testy{
     float: left;
     clear: right;
     font-family: 'Times New Roman', Times, serif;
@@ -18,4 +21,61 @@
     font-weight: bolder;
     border-radius: 10px;
     margin: 20px 0 10px 10px;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+.pq, .pullquote {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.pq {
+    background-color: rgba(255, 211, 224, 0.5);
+    font-weight: bolder;
+}
+
+.pullquote {
+    float: right;
+    width: 200px;
+    background-color: rgba(200, 255, 200, 0.5);
+    font-style: italic;
+}
+
+a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bolder;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.button-container button {
+    flex: 1 0 21%; 
+    padding: 10px;
+}
+
+.main {
+    margin-top: 20px;
 }
