@@ -48,38 +48,46 @@
                 <tr>
                     <th>Element</th>
                     <th>Opis</th>
+                    <th>Data Edycji</th>
+                    <th>Ilość Edycji</th>
                     <th>Akcja</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Input 1</td>
-                    <td><input type="text" placeholder="Wpisz coś..."></td>
-                    <td><button class="edit-btn" data-target="1">Edytuj</button></td>
+                    <td class="editable">Programy w Javie</td>
+                    <td><input type="text" placeholder="Wpisz coś..." disabled></td>
+                    <td class="edit-date">-</td>
+                    <td class="edit-count">0</td>
+                    <td><button class="edit-btn" data-target="1">Edytuj</button><button class="delete-btn">Usuń</button></td>
                 </tr>
                 <tr>
-                    <td>Input 2</td>
-                    <td><input type="text" placeholder="Wpisz coś..."></td>
-                    <td><button class="edit-btn" data-target="2">Edytuj</button></td>
+                    <td class="editable">Programy w Pythonie</td>
+                    <td><input type="text" placeholder="Wpisz coś..." disabled></td>
+                    <td class="edit-date">-</td>
+                    <td class="edit-count">0</td>
+                    <td><button class="edit-btn" data-target="2">Edytuj</button><button class="delete-btn">Usuń</button></td>
+                    
                 </tr>
                 <tr>
-                    <td>Input 3</td>
-                    <td><input type="text" placeholder="Wpisz coś..."></td>
-                    <td><button class="edit-btn" data-target="3">Edytuj</button></td>
+                    <td class="editable">Programy w C</td>
+                    <td><input type="text" placeholder="Wpisz coś..." disabled></td>
+                    <td class="edit-date">-</td>
+                    <td class="edit-count">0</td>
+                    <td><button class="edit-btn" data-target="3">Edytuj</button><button class="delete-btn">Usuń</button></td>
                 </tr>
                 <tr>
-                    <td>Input 4</td>
-                    <td><input type="text" placeholder="Wpisz coś..."></td>
-                    <td><button class="edit-btn" data-target="4">Edytuj</button></td>
-                </tr>
-                <tr>
-                    <td>Input 5</td>
-                    <td><input type="text" placeholder="Wpisz coś..."></td>
-                    <td><button class="edit-btn" data-target="5">Edytuj</button></td>
+                    <td class="editable">Programy w Javascript</td>
+                    <td><input type="text" placeholder="Wpisz coś..." disabled></td>
+                    <td class="edit-date">-</td>
+                    <td class="edit-count">0</td>
+                    <td><button class="edit-btn" data-target="4">Edytuj</button><button class="delete-btn">Usuń</button></td>
                 </tr>
             </tbody>
         </table>
+        <button id="add-row-btn">Dodaj nowy wiersz</button>
     </section>
+    
 
     <section id="Projekt6">
         <h2>Przyciski do edycji</h2>
@@ -87,141 +95,190 @@
         <button class="edit-color" data-target="2">Zmień kolor Input 2</button>
         <button class="edit-color" data-target="3">Zmień kolor Input 3</button>
         <button class="edit-color" data-target="4">Zmień kolor Input 4</button>
-        <button class="edit-color" data-target="5">Zmień kolor Input 5</button>
     </section>
 
     <section id="Projekt7">
         <h2>Przyciski do filtrów</h2>
-        <button class="filter-btn" data-filter="even">Parzyste wiersze</button>
-        <button class="filter-btn" data-filter="odd">Nieparzyste wiersze</button>
+        <button class="filter-btn" data-filter="even">Nieparzyste wiersze</button>
+        <button class="filter-btn" data-filter="odd">Parzyste wiersze</button>
         <button class="filter-btn" data-filter="class">Wiersze z klasą</button>
         <button class="filter-btn" data-filter="first-last">Pierwszy i ostatni</button>
-        <button class="filter-btn" data-filter="not">Elementy, które nie pasują</button>
-        <button class="filter-btn" data-filter="contains">Elementy zawierające tekst</button>
-        <button class="filter-btn" data-filter="hidden">Pokaż ukryte elementy</button>
+        <button class="filter-btn" data-filter="not">Elementy, które nie pasują (nie pierwszy i ostatni)</button>
+        <button class="filter-btn" data-filter="contains">Elementy zawierające tekst Java</button>
+        <button class="filter-btn" data-filter="hidden">Pokaż/Ukryj ukryte elementy (które mają ilość edycji 0)</button>
     </section>
 
     <div class="main"></div>
 
     <script>
-        $(document).ready(function() {
-            $('span.pq').each(function() {
-                const quote = $(this).clone();
-                quote.removeClass('pq').addClass('pullquote');
-                $(this).before(quote);
-            });
-            $(document).dblclick(function() {
-                alert("Podwójnie kliknięto!");
-            });
-            $('#Projekt3 a').hover(function() {
-                const message = "<p>Wskazałeś odnośnik myszą!</p>";
-                $('.main').append(message);
-            });
-            $('#clickMe').click(function() {
-                $(this).text("zostałem kliknięty!");
-            });
+        $(document).ready(function () {
+    $('span.pq').each(function () {
+        const quote = $(this).clone();
+        quote.removeClass('pq').addClass('pullquote');
+        $(this).before(quote);
+    });
 
-            $('.change-btn').click(function() {
-            const btnNumber = $(this).data('number');
-            $(this).text(`NR. ${btnNumber} kliknięty`);
-            switch (btnNumber) {
-                case 1:
-                    $('h1').addClass('bg-blue');
-                    $('.main').append('<p>Zmieniono tło nagłówka na niebieskie. TAG: H1</p>');
-                    break;
-                case 2:
-                    $('h2').addClass('bg-green');
-                    $('.main').append('<p>Zmieniono tło nagłówka na zielone. TAG: H2</p>');
-                    break;
-                case 3:
-                    $('p').addClass('bg-yellow');
-                    $('.main').append('<p>Zmieniono tło akapitu na żółte. TAG: P</p>');
-                    break;
-                case 4:
-                    $('h1').addClass('font-');
-                    $('.main').append('<p>Zwiększono czcionkę nagłówka. TAG: H1</p>');
-                    break;
-                case 5:
-                    $('h2').addClass('font-small');
-                    $('.main').append('<p>Zmniejszono czcionkę nagłówka. TAG: H2</p>');
-                    break;
-                case 6:
-                    $('p').addClass('bold');
-                    $('.main').append('<p>Pogrubiono tekst akapitu. TAG: P</p>');
-                    break;
-                case 7:
-                    $('h1').addClass('italic');
-                    $('.main').append('<p>Użyto kursywy w nagłówku. TAG: H1</p>');
-                    break;
-                case 8:
-                    $('h2').addClass('bold italic');
-                    $('.main').append('<p>Pogrubiono i użyto kursywy w nagłówku. TAG: H2</p>');
-                    break;
-                case 9:
-                    $('p').css('color', 'purple');
-                    $('.main').append('<p>Zmieniłem kolor tekstu akapitu na purpurowy. TAG: P</p>');
-                    break;
-                case 10:
-                    $('h1, h2, p').css({'font-size': '30px', 'color': 'orange'});
-                    $('.main').append('<p>Zmieniłem czcionkę wszystkich nagłówków i akapitów. TAG: H1, H2, P</p>');
-                    break;
-                default:
-                    break;
+    $(document).dblclick(function () {
+        alert("Podwójnie kliknięto!");
+    });
+    $('#Projekt3 a').hover(function () {
+        const message = "<p>Wskazałeś odnośnik myszą!</p>";
+        $('.main').append(message);
+    });
+
+    $('#clickMe').click(function () {
+        $(this).text("zostałem kliknięty!");
+    });
+
+    $('.change-btn').click(function () {
+        const btnNumber = $(this).data('number');
+        $(this).text(`NR. ${btnNumber} kliknięty`);
+        let message = '';
+        switch (btnNumber) {
+            case 1:
+                $('h1').addClass('bg-blue');
+                message = '<p>Zmieniono tło nagłówka na niebieskie. TAG: H1</p>';
+                break;
+            case 2:
+                $('h2').addClass('bg-green');
+                message = '<p>Zmieniono tło nagłówka na zielone. TAG: H2</p>';
+                break;
+            case 3:
+                $('p').addClass('bg-yellow');
+                message = '<p>Zmieniono tło akapitu na żółte. TAG: P</p>';
+                break;
+            case 4:
+                $('h1').addClass('font-large');
+                message = '<p>Zmieniono rozmiar fontu nagłówka H1 na duży</p>';
+                break;
+            case 5:
+                $('h2').addClass('font-large');
+                message = '<p>Zmieniono rozmiar fontu nagłówka H2 na duży</p>';
+                break;
+            case 6:
+                $('p').addClass('font-large');
+                message = '<p>Zmieniono rozmiar fontu akapitu na duży</p>';
+                break;
+            case 7:
+                $('h1').removeClass('font-large bg-blue');
+                message = '<p>Przywrócono oryginalny rozmiar i kolor nagłówka H1</p>';
+                break;
+            case 8:
+                $('h2').removeClass('font-large bg-green');
+                message = '<p>Przywrócono oryginalny rozmiar i kolor nagłówka H2</p>';
+                break;
+            case 9:
+                $('p').removeClass('font-large bg-yellow');
+                message = '<p>Przywrócono oryginalny rozmiar i kolor akapitu</p>';
+                break;
+            case 10:
+                $('.main').append('<p>Przycisk 10: Custom Action Executed</p>');
+                break;
+        }
+        $('.main').append(message);
+    });
+    $('#add-row-btn').click(function () {
+            const lastRow = $('tbody tr:last');
+            const newRow = lastRow.clone();
+            newRow.find('td:nth-child(2) input').val(''); 
+            newRow.find('.edit-date').text('-');          
+            newRow.find('.edit-count').text('0');         
+            newRow.find('.edit-btn').text('Edytuj');     
+            newRow.find('.editable').text('');             
+
+            $('tbody').append(newRow);
+        });
+        $(document).on('click', '.editable', function () {
+            const currentText = $(this).text();
+            const input = $('<input type="text" />').val(currentText);
+
+            $(this).replaceWith(input);
+            input.focus();
+
+            input.blur(function () {
+                const newText = $(this).val();
+                $(this).replaceWith('<td class="editable">' + newText + '</td>');
+            });
+        });
+        $(document).on('click', '.edit-btn', function () {
+            const inputField = $(this).closest('tr').find('input');
+            const isEditable = inputField.prop('disabled');
+            if (isEditable) {
+                inputField.prop('disabled', false).focus().css('border', '2px solid blue');
+                $(this).text('Zapisz');
+            } else {
+                inputField.prop('disabled', true).css('border', '1px solid #ccc');
+                $(this).text('Edytuj');
+                const editDate = new Date().toLocaleString();
+                const editCountElem = $(this).closest('tr').find('.edit-count');
+                const editCount = parseInt(editCountElem.text()) + 1;
+                $(this).closest('tr').find('.edit-date').text(editDate);
+                editCountElem.text(editCount);
             }
         });
-            $('.edit-btn').click(function() {
-                const target = $(this).data('target');
-                const inputField = $(`tbody tr:nth-child(${target}) input`);
-                inputField.css('border', '2px solid blue');
-                inputField.focus();
-            });
 
-            $('.edit-color').click(function() {
-                const target = $(this).data('target');
-                const inputField = $(`tbody tr:nth-child(${target}) input`);
-                const currentColor = inputField.css('border-color');
-                if (currentColor === 'rgb(0, 0, 255)') {
-                    inputField.css('border', '1px solid #ccc');
-                    $(this).css('background-color', '');
-                } else {
-                    inputField.css('border', '2px solid blue');
-                    $(this).css('background-color', 'lightblue'); 
-                }
-            });
-            
-            $('.filter-btn').click(function() {
-                const filter = $(this).data('filter');
-                switch (filter) {
-                    case 'even':
-                        $('tbody tr:even').css('background-color', 'lightgreen');
-                        $('tbody tr:odd').css('background-color', '');
-                        break;
-                    case 'odd':
-                        $('tbody tr:odd').css('background-color', 'lightcoral');
-                        $('tbody tr:even').css('background-color', '');
-                        break;
-                    case 'class':
-                        $('tbody tr').removeClass('highlight');
-                        $('tbody tr:even').addClass('highlight').css('background-color', 'lightblue');
-                        break;
-                    case 'first-last':
-                        $('tbody tr:first').css('background-color', 'lightyellow');
-                        $('tbody tr:last').css('background-color', 'lightyellow');
-                        break;
-                    case 'not':
-                        $('tbody tr:not(:first)').css('background-color', 'lightgray');
-                        break;
-                    case 'contains':
-                        $('tbody tr:contains("Input 3")').css('background-color', 'lightpink');
-                        break;
-                    case 'hidden':
-                        $('tbody tr').fadeOut().fadeIn();
-                        break;
-                    default:
-                        break;
-                }
-            });
-        });
-    </script>
+    $('.edit-color').click(function () {
+        const target = $(this).data('target');
+        const inputField = $(`tbody tr:nth-child(${target}) input`);
+        const isBlue = inputField.css('border-color') === 'rgb(0, 0, 255)';
+        if (isBlue) {
+            inputField.css('border', '1px solid #ccc');
+            $(this).css('background-color', '');
+        } else {
+            inputField.css('border', '2px solid blue');
+            $(this).css('background-color', 'lightblue');
+        }
+    });
+    $(document).on('click', '.delete-btn', function () {
+        const confirmDelete = confirm("Czy na pewno chcesz usunąć ten wiersz?");
+        if (confirmDelete) {
+            $(this).closest('tr').remove();
+        }
+    });
+    $('.filter-btn').click(function () {
+        const filter = $(this).data('filter');
+        const isFiltered = $(this).hasClass('active');
+        $('.filter-btn').removeClass('active');
+        $('tbody tr').stop(true, true).show().css('background-color', '').removeClass('hidden-row');
+
+        if (!isFiltered) {
+            $(this).addClass('active');
+            switch (filter) {
+                case 'even':
+                    $('tbody tr:even').css('background-color', 'lightgreen');
+                    break;
+                case 'odd':
+                    $('tbody tr:odd').css('background-color', 'lightcoral');
+                    break;
+                case 'class':
+                    $('tbody tr').filter('.highlight').css('background-color', 'lightblue');
+                    break;
+                case 'first-last':
+                    $('tbody tr:first, tbody tr:last').css('background-color', 'lightyellow');
+                    break;
+                case 'not':
+                    $('tbody tr').not(':first, :last').css('background-color', 'lightgray');
+                    break;
+                case 'contains':
+                    $('tbody tr:contains("Java")').css('background-color', 'lightpink');
+                    break;
+                case 'hidden':
+                    $('tbody tr').each(function() {
+                        const editCount = $(this).find('.edit-count').text();
+                        if (editCount === "0") {
+                            $(this).addClass('hidden-row').fadeOut(500);
+                        }
+                    });
+                    break;
+            }
+        } else {
+
+            $('tbody tr').stop(true, true).fadeIn(500);
+        }
+    });
+
+    $('tbody tr:nth-child(2)').addClass('highlight');
+});
+</script>
 </body>
 </html>
