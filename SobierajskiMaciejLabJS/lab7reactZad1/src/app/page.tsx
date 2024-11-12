@@ -1,34 +1,43 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 import Card from '../../components/Card';
+import { CounterProvider } from '../../components/CounterContext';
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
+  useEffect(() => {
+    console.log('HomePage mounted');
+    return () => console.log('HomePage unmounted');
+  }, []);
+
   return (
-    <div style={styles.container}>
-      <Card
-        title="Beautiful Beach"
-        description="A scenic beach with crystal-clear water and golden sand."
-        imageUrl="https://blog.binomo-brokers.com/wp-content/uploads/2022/05/65-1050x530.jpg"
-      />
-      <Card
-        title="Mountain Range"
-        description="A breathtaking view of a mountain range under a clear blue sky."
-        imageUrl="https://img.myloview.pl/naklejki/a-close-up-of-a-mountain-range-with-snow-capped-peaks-and-a-clear-blue-sky-mountain-snow-landscape-mountains-winter-alps-sky-peak-nature-ice-glacier-rock-high-view-alpine-ski-cold-700-346404343.jpg"
-      />
-      <Card
-        title="City Skyline"
-        description="A bustling city skyline at night with lights shining brightly."
-        imageUrl="https://store-images.s-microsoft.com/image/apps.40893.14241982748923031.b7ab82d8-956b-4d85-b739-c1cd07cb25df.3886a099-ec34-45a1-ab0f-2cef8f8b767a?q=90&w=480&h=270"
-      />
-    </div>
+    <CounterProvider>
+      <div style={styles.container}>
+        <h1>Counter App with Hooks</h1>
+        
+        <Card 
+          title="Card 1"
+          description="This is the first card with a local and global counter."
+        />
+        
+        <Card 
+          title="Card 2"
+          description="This is the second card with a local and global counter."
+        />
+        
+        <Card 
+          title="Card 3"
+          description="This is the third card with a local and global counter."
+        />
+      </div>
+    </CounterProvider>
   );
 };
 
 const styles = {
   container: {
     display: 'flex',
-    gap: '20px',
-    flexWrap: 'wrap' as 'wrap',
-    justifyContent: 'center',
+    flexDirection: 'column' as 'column',
+    alignItems: 'center',
     padding: '20px',
   },
 };
