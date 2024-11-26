@@ -1,0 +1,11 @@
+{
+    "name": "Jane Doe",
+    "bio": "Avid hiker and software engineer.",
+    "funFact": "I once climbed Mount Everest!",
+    "image": "https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?semt=ais_hybrid",
+    "style": {
+      "border": "2px solid #000",
+      "padding": "20px",
+      "backgroundColor": "#f0f0f0"
+    }
+  }
