@@ -1,0 +1,10 @@
+.moje-zainteresowania-layout {
+    font-family: 'Arial', sans-serif;
+    color: #34495e;
+    background-color: #ecf0f1;
+  }
+  
+  .moje-zainteresowania-layout header h1 {
+    color: #e74c3c;
+    font-size: 32px;
+  }
