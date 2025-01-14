@@ -10,4 +10,6 @@
 
 - **[Lab 11 Hosting](https://straybeing.github.io/lab11/)**
 
-- **[Lab 12 Hosting](https://lab12-b693.vercel.app/)**   
+- **[Lab 12 Hosting](https://lab12-b693.vercel.app/)**
+
+- **[Lab 12 Hosting](https://lab13next.vercel.app/)**
